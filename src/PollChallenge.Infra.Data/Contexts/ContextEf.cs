@@ -8,8 +8,9 @@ namespace PollChallenge.Infra.Data.Contexts
     {
         public ContextEf(DbContextOptions options) : base(options) { }
 
-        public DbSet<Poll> Polls { get; }
-        public DbSet<PollOption> PollOptions { get; }
+        public DbSet<Poll> Polls { get; set; }
+        public DbSet<PollOption> PollOptions { get; set; }
+        public DbSet<Vote> Votes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -18,6 +19,7 @@ namespace PollChallenge.Infra.Data.Contexts
 
             modelBuilder.ApplyConfiguration(new PollMapping());
             modelBuilder.ApplyConfiguration(new PollOptionMapping());
+            modelBuilder.ApplyConfiguration(new VoteMapping());
         }
     }
 }

@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PollChallenge.Service.Api.Commons;
 using PollChallenge.Service.Api.Middlewares;
+using PollChallenge.Infra.CrossCutting.Ioc;
 
 namespace PollChallenge.Service.Api
 {
@@ -21,6 +22,7 @@ namespace PollChallenge.Service.Api
         {
             services.RegisterServicesApi(Configuration);
             services.RegisterServiceSwagger();
+            services.RegisterServicesIoc();
         }
 
         public static void Configure(IApplicationBuilder app,

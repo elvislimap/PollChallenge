@@ -32,8 +32,7 @@ namespace PollChallenge.Service.Api.Migrations
                 {
                     PollOptionId = table.Column<int>(type: "int", nullable: false),
                     PollId = table.Column<int>(type: "int", nullable: false),
-                    Description = table.Column<string>(type: "varchar(50)", nullable: false),
-                    Votes = table.Column<int>(type: "int", nullable: true)
+                    Description = table.Column<string>(type: "varchar(50)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -47,15 +46,47 @@ namespace PollChallenge.Service.Api.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Votes",
+                schema: "PollChallenge",
+                columns: table => new
+                {
+                    VoteId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    PollId = table.Column<int>(type: "int", nullable: false),
+                    PollOptionId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Votes", x => x.VoteId);
+                    table.ForeignKey(
+                        name: "FK_Votes_PollOptions_PollOptionId_PollId",
+                        columns: x => new { x.PollOptionId, x.PollId },
+                        principalSchema: "PollChallenge",
+                        principalTable: "PollOptions",
+                        principalColumns: new[] { "PollOptionId", "PollId" },
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_PollOptions_PollId",
                 schema: "PollChallenge",
                 table: "PollOptions",
                 column: "PollId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Votes_PollOptionId_PollId",
+                schema: "PollChallenge",
+                table: "Votes",
+                columns: new[] { "PollOptionId", "PollId" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Votes",
+                schema: "PollChallenge");
+
             migrationBuilder.DropTable(
                 name: "PollOptions",
                 schema: "PollChallenge");

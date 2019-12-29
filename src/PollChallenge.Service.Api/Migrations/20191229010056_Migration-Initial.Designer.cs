@@ -10,7 +10,7 @@ using PollChallenge.Infra.Data.Contexts;
 namespace PollChallenge.Service.Api.Migrations
 {
     [DbContext(typeof(ContextEf))]
-    [Migration("20191228231246_Migration-Initial")]
+    [Migration("20191229010056_Migration-Initial")]
     partial class MigrationInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,9 +53,6 @@ namespace PollChallenge.Service.Api.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(50)");
 
-                    b.Property<int?>("Votes")
-                        .HasColumnType("int");
-
                     b.HasKey("PollOptionId", "PollId");
 
                     b.HasIndex("PollId");
@@ -63,11 +60,39 @@ namespace PollChallenge.Service.Api.Migrations
                     b.ToTable("PollOptions");
                 });
 
+            modelBuilder.Entity("PollChallenge.Domain.Entities.Vote", b =>
+                {
+                    b.Property<int>("VoteId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("PollId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PollOptionId")
+                        .HasColumnType("int");
+
+                    b.HasKey("VoteId");
+
+                    b.HasIndex("PollOptionId", "PollId");
+
+                    b.ToTable("Votes");
+                });
+
             modelBuilder.Entity("PollChallenge.Domain.Entities.PollOption", b =>
                 {
                     b.HasOne("PollChallenge.Domain.Entities.Poll", "Poll")
                         .WithMany("Options")
                         .HasForeignKey("PollId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("PollChallenge.Domain.Entities.Vote", b =>
+                {
+                    b.HasOne("PollChallenge.Domain.Entities.PollOption", "PollOption")
+                        .WithMany("Votes")
+                        .HasForeignKey("PollOptionId", "PollId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

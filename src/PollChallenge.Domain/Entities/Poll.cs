@@ -4,9 +4,8 @@ namespace PollChallenge.Domain.Entities
 {
     public class Poll
     {
-        public Poll(int pollId, string description, int? views)
+        public Poll(string description, int? views)
         {
-            PollId = pollId;
             Description = description;
             Views = views;
         }
@@ -16,5 +15,21 @@ namespace PollChallenge.Domain.Entities
         public int? Views { get; private set; }
 
         public virtual IEnumerable<PollOption> Options { get; private set; }
+
+        public Poll GetOnlyPollId()
+        {
+            Description = null;
+            Views = null;
+
+            return this;
+        }
+
+        public static Poll MountInsert(string description, IEnumerable<string> options)
+        {
+            return new Poll(description, null)
+            {
+                Options = PollOption.MountList(options)
+            };
+        }
     }
 }
