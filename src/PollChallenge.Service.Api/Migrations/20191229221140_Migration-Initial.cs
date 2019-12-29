@@ -17,7 +17,7 @@ namespace PollChallenge.Service.Api.Migrations
                 {
                     PollId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Description = table.Column<string>(type: "varchar(100)", nullable: false),
+                    PollDescription = table.Column<string>(type: "varchar(100)", nullable: false),
                     Views = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -30,13 +30,13 @@ namespace PollChallenge.Service.Api.Migrations
                 schema: "PollChallenge",
                 columns: table => new
                 {
-                    PollOptionId = table.Column<int>(type: "int", nullable: false),
+                    OptionId = table.Column<int>(type: "int", nullable: false),
                     PollId = table.Column<int>(type: "int", nullable: false),
-                    Description = table.Column<string>(type: "varchar(50)", nullable: false)
+                    OptionDescription = table.Column<string>(type: "varchar(50)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PollOptions", x => new { x.PollOptionId, x.PollId });
+                    table.PrimaryKey("PK_PollOptions", x => new { x.OptionId, x.PollId });
                     table.ForeignKey(
                         name: "FK_PollOptions_Polls_PollId",
                         column: x => x.PollId,
@@ -54,17 +54,17 @@ namespace PollChallenge.Service.Api.Migrations
                     VoteId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     PollId = table.Column<int>(type: "int", nullable: false),
-                    PollOptionId = table.Column<int>(type: "int", nullable: false)
+                    OptionId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Votes", x => x.VoteId);
                     table.ForeignKey(
-                        name: "FK_Votes_PollOptions_PollOptionId_PollId",
-                        columns: x => new { x.PollOptionId, x.PollId },
+                        name: "FK_Votes_PollOptions_OptionId_PollId",
+                        columns: x => new { x.OptionId, x.PollId },
                         principalSchema: "PollChallenge",
                         principalTable: "PollOptions",
-                        principalColumns: new[] { "PollOptionId", "PollId" },
+                        principalColumns: new[] { "OptionId", "PollId" },
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -75,10 +75,10 @@ namespace PollChallenge.Service.Api.Migrations
                 column: "PollId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Votes_PollOptionId_PollId",
+                name: "IX_Votes_OptionId_PollId",
                 schema: "PollChallenge",
                 table: "Votes",
-                columns: new[] { "PollOptionId", "PollId" });
+                columns: new[] { "OptionId", "PollId" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

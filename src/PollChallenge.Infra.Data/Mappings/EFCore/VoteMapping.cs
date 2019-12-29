@@ -12,7 +12,7 @@ namespace PollChallenge.Infra.Data.Mappings.EFCore
 
             builder.Property(v => v.VoteId).HasColumnType("int").ValueGeneratedOnAdd();
             builder.Property(v => v.PollId).HasColumnType("int").IsRequired();
-            builder.Property(v => v.PollOptionId).HasColumnType("int").IsRequired();
+            builder.Property(v => v.OptionId).HasColumnType("int").IsRequired();
 
             builder.HasOne(v => v.PollOption).WithMany(p => p.Votes);
         }

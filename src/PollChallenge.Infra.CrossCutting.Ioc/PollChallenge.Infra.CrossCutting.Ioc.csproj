@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\PollChallenge.Application\PollChallenge.Application.csproj" />
     <ProjectReference Include="..\PollChallenge.Domain\PollChallenge.Domain.csproj" />
+    <ProjectReference Include="..\PollChallenge.Infra.CrossCutting.Json\PollChallenge.Infra.CrossCutting.Json.csproj" />
     <ProjectReference Include="..\PollChallenge.Infra.Data\PollChallenge.Infra.Data.csproj" />
   </ItemGroup>
 

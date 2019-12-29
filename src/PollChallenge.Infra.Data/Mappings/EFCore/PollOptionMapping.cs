@@ -8,11 +8,11 @@ namespace PollChallenge.Infra.Data.Mappings.EFCore
     {
         public void Configure(EntityTypeBuilder<PollOption> builder)
         {
-            builder.HasKey(p => new { p.PollOptionId, p.PollId });
+            builder.HasKey(p => new { p.OptionId, p.PollId });
 
-            builder.Property(p => p.PollOptionId).HasColumnType("int");
+            builder.Property(p => p.OptionId).HasColumnType("int");
             builder.Property(p => p.PollId).HasColumnType("int").IsRequired();
-            builder.Property(p => p.Description).HasColumnType("varchar(50)").IsRequired();
+            builder.Property(p => p.OptionDescription).HasColumnType("varchar(50)").IsRequired();
 
             builder.HasOne(po => po.Poll).WithMany(p => p.Options);
         }

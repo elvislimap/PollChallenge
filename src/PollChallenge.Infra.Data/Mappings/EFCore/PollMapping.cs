@@ -11,7 +11,7 @@ namespace PollChallenge.Infra.Data.Mappings.EFCore
             builder.HasKey(p => p.PollId);
 
             builder.Property(p => p.PollId).HasColumnType("int").ValueGeneratedOnAdd();
-            builder.Property(p => p.Description).HasColumnType("varchar(100)").IsRequired();
+            builder.Property(p => p.PollDescription).HasColumnType("varchar(100)").IsRequired();
             builder.Property(p => p.Views).HasColumnType("int").IsRequired(false);
         }
     }

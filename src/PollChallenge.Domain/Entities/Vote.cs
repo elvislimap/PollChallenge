@@ -2,15 +2,15 @@
 {
     public class Vote
     {
-        public Vote(int pollId, int pollOptionId)
+        public Vote(int pollId, int optionId)
         {
             PollId = pollId;
-            PollOptionId = pollOptionId;
+            OptionId = optionId;
         }
 
         public int VoteId { get; private set; }
         public int PollId { get; private set; }
-        public int PollOptionId { get; private set; }
+        public int OptionId { get; private set; }
 
         public virtual PollOption PollOption { get; private set; }
     }

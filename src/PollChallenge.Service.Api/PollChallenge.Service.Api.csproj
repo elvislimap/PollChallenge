@@ -12,6 +12,10 @@
     <Compile Remove="Migrations\20191228230825_Migration-Initial.Designer.cs" />
     <Compile Remove="Migrations\20191228231246_Migration-Initial.cs" />
     <Compile Remove="Migrations\20191228231246_Migration-Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191229010056_Migration-Initial.cs" />
+    <Compile Remove="Migrations\20191229010056_Migration-Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191229194519_Migration-Initial.cs" />
+    <Compile Remove="Migrations\20191229194519_Migration-Initial.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,6 +26,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PollChallenge.Infra.CrossCutting.Ioc\PollChallenge.Infra.CrossCutting.Ioc.csproj" />
+    <ProjectReference Include="..\PollChallenge.Infra.CrossCutting.Json\PollChallenge.Infra.CrossCutting.Json.csproj" />
     <ProjectReference Include="..\PollChallenge.Infra.Data\PollChallenge.Infra.Data.csproj" />
   </ItemGroup>
 

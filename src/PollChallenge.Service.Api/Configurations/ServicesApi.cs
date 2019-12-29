@@ -2,12 +2,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json.Serialization;
+using PollChallenge.Infra.CrossCutting.Json;
 using PollChallenge.Infra.Data.Contexts;
 
-namespace PollChallenge.Service.Api.Commons
+namespace PollChallenge.Service.Api.Configurations
 {
-    public static class Configurations
+    public static class ServicesApi
     {
         public static void RegisterServicesApi(this IServiceCollection services, IConfiguration configuration)
         {
@@ -18,13 +18,7 @@ namespace PollChallenge.Service.Api.Commons
                 builder => builder.MigrationsAssembly("PollChallenge.Service.Api")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-                .AddJsonOptions(opt =>
-                {
-                    opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-
-                    var resolver = opt.SerializerSettings.ContractResolver as CamelCasePropertyNamesContractResolver;
-                    resolver.NamingStrategy = new SnakeCaseNamingStrategy();
-                });
+                .AddJsonOptions(opt => opt.SerializerSettings.ContractResolver = new CustomContractResolver());
         }
     }
 }

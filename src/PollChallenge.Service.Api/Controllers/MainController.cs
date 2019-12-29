@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PollChallenge.Domain.Interfaces.Services;
-using PollChallenge.Domain.ValueObjects;
 using System.Linq;
 
 namespace PollChallenge.Service.Api.Controllers
@@ -19,8 +18,7 @@ namespace PollChallenge.Service.Api.Controllers
         protected ActionResult CustomResponse(object result = null, bool resultNotNull = true)
         {
             if (_notificationService.HaveNotification())
-                return BadRequest(
-                    new ResultBadRequest(_notificationService.GetNotifications().Select(n => n.Message)));
+                return BadRequest(_notificationService.GetNotifications().Select(n => n.Message));
 
             if (resultNotNull && result == null)
                 return NotFound(null);

@@ -1,10 +1,9 @@
-﻿using PollChallenge.Domain.Entities;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace PollChallenge.Application.Interfaces
 {
     public interface IVoteAppService
     {
-        Task Insert(Vote vote);
+        Task<object> Insert(int pollId, int optionId);
     }
 }

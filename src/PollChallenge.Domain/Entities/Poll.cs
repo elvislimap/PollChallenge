@@ -4,25 +4,17 @@ namespace PollChallenge.Domain.Entities
 {
     public class Poll
     {
-        public Poll(string description, int? views)
+        public Poll(string pollDescription, int? views)
         {
-            Description = description;
+            PollDescription = pollDescription;
             Views = views;
         }
 
         public int PollId { get; private set; }
-        public string Description { get; private set; }
+        public string PollDescription { get; private set; }
         public int? Views { get; private set; }
 
         public virtual IEnumerable<PollOption> Options { get; private set; }
-
-        public Poll GetOnlyPollId()
-        {
-            Description = null;
-            Views = null;
-
-            return this;
-        }
 
         public static Poll MountInsert(string description, IEnumerable<string> options)
         {

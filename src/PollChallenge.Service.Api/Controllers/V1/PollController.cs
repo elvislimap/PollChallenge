@@ -3,7 +3,6 @@ using PollChallenge.Application.Interfaces;
 using PollChallenge.Domain.Entities;
 using PollChallenge.Domain.Interfaces.Services;
 using PollChallenge.Domain.ValueObjects;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace PollChallenge.Service.Api.Controllers.V1
@@ -12,21 +11,15 @@ namespace PollChallenge.Service.Api.Controllers.V1
     public class PollController : MainController
     {
         private readonly IPollAppService _pollAppService;
+        private readonly IVoteAppService _voteAppService;
 
         public PollController(INotificationService notificationService,
-            IPollAppService pollAppService) : base(notificationService)
+            IPollAppService pollAppService, IVoteAppService voteAppService) : base(notificationService)
         {
             _pollAppService = pollAppService;
+            _voteAppService = voteAppService;
         }
 
-
-        [HttpGet("test")]
-        public ActionResult<RequestInsertPoll> Test()
-        {
-            var temp = new RequestInsertPoll("Teste ABCDE", new List<string> { "Primeiro", "Segundo", "Terceiro" });
-
-            return CustomResponse(temp);
-        }
 
         [HttpGet("{pollId}")]
         public async Task<ActionResult<Poll>> GetById(int pollId)
@@ -44,6 +37,12 @@ namespace PollChallenge.Service.Api.Controllers.V1
         public async Task<ActionResult<Poll>> Insert([FromBody] RequestInsertPoll requestInsertPoll)
         {
             return CustomResponse(await _pollAppService.Insert(requestInsertPoll));
+        }
+
+        [HttpPost("{pollId}/vote")]
+        public async Task<ActionResult<Poll>> Vote(int pollId, [FromBody] Vote vote)
+        {
+            return CustomResponse(await _voteAppService.Insert(pollId, vote.OptionId));
         }
     }
 }

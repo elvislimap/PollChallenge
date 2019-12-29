@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using PollChallenge.Service.Api.Commons;
+using PollChallenge.Service.Api.Configurations;
 using PollChallenge.Service.Api.Middlewares;
 using PollChallenge.Infra.CrossCutting.Ioc;
 

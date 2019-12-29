@@ -4,9 +4,9 @@ namespace PollChallenge.Domain.ValueObjects
 {
     public class RequestInsertPoll
     {
-        public RequestInsertPoll(string poll, IEnumerable<string> options)
+        public RequestInsertPoll(string pollDescription, IEnumerable<string> options)
         {
-            PollDescription = poll;
+            PollDescription = pollDescription;
             Options = options;
         }
 

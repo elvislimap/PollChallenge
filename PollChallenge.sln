@@ -15,15 +15,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PollChallenge.Domain", "src
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra.Data", "Infra.Data", "{E2F005A2-6A94-41A8-8895-1A74195D5907}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PollChallenge.Infra.Data", "src\PollChallenge.Infra.Data\PollChallenge.Infra.Data.csproj", "{A8FD3342-8FDF-4BB0-B307-6BABA093CA0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PollChallenge.Infra.Data", "src\PollChallenge.Infra.Data\PollChallenge.Infra.Data.csproj", "{A8FD3342-8FDF-4BB0-B307-6BABA093CA0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PollChallenge.Service.Api", "src\PollChallenge.Service.Api\PollChallenge.Service.Api.csproj", "{9C99EC0C-8E84-4330-AF32-ABA20ADDA258}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PollChallenge.Service.Api", "src\PollChallenge.Service.Api\PollChallenge.Service.Api.csproj", "{9C99EC0C-8E84-4330-AF32-ABA20ADDA258}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra.CrossCutting", "Infra.CrossCutting", "{2206ED93-8A5B-41CE-A2C0-78BCAA55BF3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PollChallenge.Infra.CrossCutting.Ioc", "src\PollChallenge.Infra.CrossCutting.Ioc\PollChallenge.Infra.CrossCutting.Ioc.csproj", "{8B94CF16-8F93-4155-BB5A-5F11890EA003}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PollChallenge.Infra.CrossCutting.Ioc", "src\PollChallenge.Infra.CrossCutting.Ioc\PollChallenge.Infra.CrossCutting.Ioc.csproj", "{8B94CF16-8F93-4155-BB5A-5F11890EA003}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PollChallenge.Application", "src\PollChallenge.Application\PollChallenge.Application.csproj", "{AF910C60-8EF3-4077-9AB7-7348C451C489}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PollChallenge.Application", "src\PollChallenge.Application\PollChallenge.Application.csproj", "{AF910C60-8EF3-4077-9AB7-7348C451C489}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PollChallenge.Infra.CrossCutting.Json", "src\PollChallenge.Infra.CrossCutting.Json\PollChallenge.Infra.CrossCutting.Json.csproj", "{90CBA04E-D233-4A7A-9A7E-53AD40D42E9A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{AF910C60-8EF3-4077-9AB7-7348C451C489}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF910C60-8EF3-4077-9AB7-7348C451C489}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF910C60-8EF3-4077-9AB7-7348C451C489}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90CBA04E-D233-4A7A-9A7E-53AD40D42E9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90CBA04E-D233-4A7A-9A7E-53AD40D42E9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90CBA04E-D233-4A7A-9A7E-53AD40D42E9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90CBA04E-D233-4A7A-9A7E-53AD40D42E9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +69,7 @@ Global
 		{2206ED93-8A5B-41CE-A2C0-78BCAA55BF3B} = {E538DA32-69F9-4989-BAE1-E9D1C6DC47FC}
 		{8B94CF16-8F93-4155-BB5A-5F11890EA003} = {2206ED93-8A5B-41CE-A2C0-78BCAA55BF3B}
 		{AF910C60-8EF3-4077-9AB7-7348C451C489} = {B16EFEE3-09FE-4C97-9BD2-F65819A472E1}
+		{90CBA04E-D233-4A7A-9A7E-53AD40D42E9A} = {2206ED93-8A5B-41CE-A2C0-78BCAA55BF3B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7FDD8D6-075A-41B3-8571-2844C623B655}

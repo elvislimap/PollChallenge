@@ -10,7 +10,7 @@ using PollChallenge.Infra.Data.Contexts;
 namespace PollChallenge.Service.Api.Migrations
 {
     [DbContext(typeof(ContextEf))]
-    [Migration("20191229010056_Migration-Initial")]
+    [Migration("20191229221140_Migration-Initial")]
     partial class MigrationInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,7 +29,7 @@ namespace PollChallenge.Service.Api.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Description")
+                    b.Property<string>("PollDescription")
                         .IsRequired()
                         .HasColumnType("varchar(100)");
 
@@ -43,17 +43,17 @@ namespace PollChallenge.Service.Api.Migrations
 
             modelBuilder.Entity("PollChallenge.Domain.Entities.PollOption", b =>
                 {
-                    b.Property<int>("PollOptionId")
+                    b.Property<int>("OptionId")
                         .HasColumnType("int");
 
                     b.Property<int>("PollId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("OptionDescription")
                         .IsRequired()
                         .HasColumnType("varchar(50)");
 
-                    b.HasKey("PollOptionId", "PollId");
+                    b.HasKey("OptionId", "PollId");
 
                     b.HasIndex("PollId");
 
@@ -67,15 +67,15 @@ namespace PollChallenge.Service.Api.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("PollId")
+                    b.Property<int>("OptionId")
                         .HasColumnType("int");
 
-                    b.Property<int>("PollOptionId")
+                    b.Property<int>("PollId")
                         .HasColumnType("int");
 
                     b.HasKey("VoteId");
 
-                    b.HasIndex("PollOptionId", "PollId");
+                    b.HasIndex("OptionId", "PollId");
 
                     b.ToTable("Votes");
                 });
@@ -92,7 +92,7 @@ namespace PollChallenge.Service.Api.Migrations
                 {
                     b.HasOne("PollChallenge.Domain.Entities.PollOption", "PollOption")
                         .WithMany("Votes")
-                        .HasForeignKey("PollOptionId", "PollId")
+                        .HasForeignKey("OptionId", "PollId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

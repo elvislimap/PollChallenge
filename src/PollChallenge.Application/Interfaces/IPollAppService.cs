@@ -6,8 +6,8 @@ namespace PollChallenge.Application.Interfaces
 {
     public interface IPollAppService
     {
-        Task<Poll> Insert(RequestInsertPoll requestInsertPoll);
-        Task<Poll> GetById(int pollId);
+        Task<object> Insert(RequestInsertPoll requestInsertPoll);
+        Task<object> GetById(int pollId);
         Task<Poll> GetStatsById(int pollId);
     }
 }

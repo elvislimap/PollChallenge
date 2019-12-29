@@ -26,7 +26,9 @@ namespace PollChallenge.Infra.Data.Repositories.EFCore
 
         public async Task<Poll> GetById(int pollId)
         {
-            return await _context.Polls.FindAsync(pollId);
+            return await _context.Polls
+                .Include(p => p.Options)
+                .FirstOrDefaultAsync(p => p.PollId == pollId);
         }
 
         public async Task<Poll> GetStatsById(int pollId)
