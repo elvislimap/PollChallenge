@@ -19,7 +19,7 @@ namespace PollChallenge.Application.Services
         public async Task<Poll> Insert(RequestInsertPoll requestInsertPoll)
         {
             // TODO: Implementar Validações
-            var poll = Poll.MountInsert(requestInsertPoll.Description, requestInsertPoll.Options);
+            var poll = Poll.MountInsert(requestInsertPoll.PollDescription, requestInsertPoll.Options);
 
             await _pollEFRepository.Insert(poll);
             return poll.GetOnlyPollId();

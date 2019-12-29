@@ -4,7 +4,13 @@ namespace PollChallenge.Domain.ValueObjects
 {
     public class RequestInsertPoll
     {
-        public string Description { get; set; }
-        public IEnumerable<string> Options { get; set; }
+        public RequestInsertPoll(string poll, IEnumerable<string> options)
+        {
+            PollDescription = poll;
+            Options = options;
+        }
+
+        public string PollDescription { get; }
+        public IEnumerable<string> Options { get; }
     }
 }

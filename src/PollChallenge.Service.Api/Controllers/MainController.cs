@@ -25,7 +25,7 @@ namespace PollChallenge.Service.Api.Controllers
             if (resultNotNull && result == null)
                 return NotFound(null);
 
-            return Ok(new ResultOk(result));
+            return Ok(result);
         }
     }
 }

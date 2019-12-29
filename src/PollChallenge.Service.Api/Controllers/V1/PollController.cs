@@ -3,11 +3,11 @@ using PollChallenge.Application.Interfaces;
 using PollChallenge.Domain.Entities;
 using PollChallenge.Domain.Interfaces.Services;
 using PollChallenge.Domain.ValueObjects;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace PollChallenge.Service.Api.Controllers.V1
 {
-    [ApiVersion("1.0")]
     [Route("poll")]
     public class PollController : MainController
     {
@@ -20,13 +20,21 @@ namespace PollChallenge.Service.Api.Controllers.V1
         }
 
 
+        [HttpGet("test")]
+        public ActionResult<RequestInsertPoll> Test()
+        {
+            var temp = new RequestInsertPoll("Teste ABCDE", new List<string> { "Primeiro", "Segundo", "Terceiro" });
+
+            return CustomResponse(temp);
+        }
+
         [HttpGet("{pollId}")]
         public async Task<ActionResult<Poll>> GetById(int pollId)
         {
             return CustomResponse(await _pollAppService.GetById(pollId));
         }
 
-        [HttpGet("/{pollId}/stats")]
+        [HttpGet("{pollId}/stats")]
         public async Task<ActionResult<Poll>> GetStatsById(int pollId)
         {
             return CustomResponse(await _pollAppService.GetStatsById(pollId));
