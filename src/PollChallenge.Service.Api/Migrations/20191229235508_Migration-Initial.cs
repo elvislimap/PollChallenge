@@ -18,7 +18,7 @@ namespace PollChallenge.Service.Api.Migrations
                     PollId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     PollDescription = table.Column<string>(type: "varchar(100)", nullable: false),
-                    Views = table.Column<int>(type: "int", nullable: true)
+                    Views = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

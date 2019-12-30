@@ -1,5 +1,4 @@
-﻿using PollChallenge.Domain.Entities;
-using PollChallenge.Domain.ValueObjects;
+﻿using PollChallenge.Domain.ValueObjects;
 using System.Threading.Tasks;
 
 namespace PollChallenge.Application.Interfaces
@@ -8,6 +7,6 @@ namespace PollChallenge.Application.Interfaces
     {
         Task<object> Insert(RequestInsertPoll requestInsertPoll);
         Task<object> GetById(int pollId);
-        Task<Poll> GetStatsById(int pollId);
+        Task<Stats> GetStatsById(int pollId);
     }
 }

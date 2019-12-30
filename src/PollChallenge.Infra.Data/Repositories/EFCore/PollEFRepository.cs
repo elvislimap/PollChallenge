@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PollChallenge.Domain.Entities;
 using PollChallenge.Domain.Interfaces.Repositories.EFCore;
+using PollChallenge.Domain.ValueObjects;
 using PollChallenge.Infra.Data.Contexts;
 using System;
 using System.Linq;
@@ -24,6 +25,12 @@ namespace PollChallenge.Infra.Data.Repositories.EFCore
             await _context.SaveChangesAsync();
         }
 
+        public async Task UpdateViews(Poll poll)
+        {
+            _context.Entry(poll).Property(p => p.Views).IsModified = true;
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<Poll> GetById(int pollId)
         {
             return await _context.Polls
@@ -31,15 +38,21 @@ namespace PollChallenge.Infra.Data.Repositories.EFCore
                 .FirstOrDefaultAsync(p => p.PollId == pollId);
         }
 
-        public async Task<Poll> GetStatsById(int pollId)
+        public async Task<Stats> GetStatsById(int pollId)
         {
-            // TODO: Implementar...
-            var temp = await _context.Polls
-                .Include(p => p.Options)
-                .Where(p => p.PollId == pollId)
+            var listStats = await _context.Polls
+                .Join(_context.Votes, p => p.PollId, v => v.PollId, (p, v) => new { Poll = p, Vote = v })
+                .Where(j => j.Poll.PollId == pollId)
+                .GroupBy(j => new { j.Poll.Views, j.Vote.OptionId })
+                .Select(g => new Stats(g.Key.Views, g.Key.OptionId, g.Count()))
                 .ToListAsync();
 
-            return null;
+            var votesGrouped = listStats.SelectMany(s => s.Votes)
+                .GroupBy(v => v.OptionId)
+                .SelectMany(g => g.ToList(), (g, v) => new VoteStats(g.Key, v.Qty))
+                .ToList();
+
+            return new Stats(listStats.First().Views, votesGrouped);
         }
 
         public void Dispose()

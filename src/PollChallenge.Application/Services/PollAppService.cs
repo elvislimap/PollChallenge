@@ -33,15 +33,14 @@ namespace PollChallenge.Application.Services
 
         public async Task<object> GetById(int pollId)
         {
-            // TODO: Atualizar views
-
             var poll = await _pollEFRepository.GetById(pollId);
-            
+            await _pollEFRepository.UpdateViews(Poll.IncreaseViews(poll));
+
             return _customContractResolver
                 .GetObjectIgnoringProperties(MountListIgnorePropertiesToGetById(poll));
         }
 
-        public async Task<Poll> GetStatsById(int pollId)
+        public async Task<Stats> GetStatsById(int pollId)
         {
             return await _pollEFRepository.GetStatsById(pollId);
         }
