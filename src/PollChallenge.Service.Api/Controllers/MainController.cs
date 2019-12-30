@@ -15,12 +15,12 @@ namespace PollChallenge.Service.Api.Controllers
         }
 
 
-        protected ActionResult CustomResponse(object result = null, bool resultNotNull = true)
+        protected ActionResult CustomResponse(object result = null)
         {
             if (_notificationService.HaveNotification())
                 return BadRequest(_notificationService.GetNotifications().Select(n => n.Message));
 
-            if (resultNotNull && result == null)
+            if (result == null)
                 return NotFound(null);
 
             return Ok(result);

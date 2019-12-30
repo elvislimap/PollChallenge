@@ -1,6 +1,6 @@
 ﻿namespace PollChallenge.Domain.Entities
 {
-    public class Vote
+    public class Vote : Entity
     {
         public Vote(int pollId, int optionId)
         {

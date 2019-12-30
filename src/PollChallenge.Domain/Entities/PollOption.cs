@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace PollChallenge.Domain.Entities
 {
-    public class PollOption
+    public class PollOption : Entity
     {
         public PollOption(int optionId, int pollId, string optionDescription)
         {
@@ -21,9 +21,12 @@ namespace PollChallenge.Domain.Entities
 
         public static IEnumerable<PollOption> MountList(IEnumerable<string> options)
         {
+            if (options == null || !options.Any())
+                return null;
+
             var pollOptions = new List<PollOption>();
 
-            for (int i = 0; i < options.Count(); i++)
+            for (var i = 0; i < options.Count(); i++)
                 pollOptions.Add(new PollOption(i + 1, 0, options.ElementAt(i)));
 
             return pollOptions;

@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PollChallenge.Domain\PollChallenge.Domain.csproj" />
-    <ProjectReference Include="..\PollChallenge.Infra.CrossCutting.Validation\PollChallenge.Infra.CrossCutting.Validation.csproj" />
   </ItemGroup>
 
 </Project>

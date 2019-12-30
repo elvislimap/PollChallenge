@@ -2,7 +2,7 @@
 
 namespace PollChallenge.Domain.Entities
 {
-    public class Poll
+    public class Poll : Entity
     {
         public Poll(string pollDescription)
         {

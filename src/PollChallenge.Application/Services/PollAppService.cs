@@ -2,18 +2,22 @@
 using PollChallenge.Domain.Entities;
 using PollChallenge.Domain.Interfaces.CrossCutting.Json;
 using PollChallenge.Domain.Interfaces.Repositories.EFCore;
+using PollChallenge.Domain.Interfaces.Services;
 using PollChallenge.Domain.ValueObjects;
+using PollChallenge.Infra.CrossCutting.Validation;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace PollChallenge.Application.Services
 {
-    public class PollAppService : IPollAppService
+    public class PollAppService : BaseAppService, IPollAppService
     {
         private readonly IPollEFRepository _pollEFRepository;
         private readonly ICustomContractResolver _customContractResolver;
 
-        public PollAppService(IPollEFRepository pollEFRepository, ICustomContractResolver customContractResolver)
+        public PollAppService(INotificationService notificationService,
+            IPollEFRepository pollEFRepository, ICustomContractResolver customContractResolver)
+            : base(notificationService)
         {
             _pollEFRepository = pollEFRepository;
             _customContractResolver = customContractResolver;
@@ -22,8 +26,9 @@ namespace PollChallenge.Application.Services
 
         public async Task<object> Insert(RequestInsertPoll requestInsertPoll)
         {
-            // TODO: Implementar Validações
             var poll = Poll.MountInsert(requestInsertPoll.PollDescription, requestInsertPoll.Options);
+
+            if (!ExecuteValidation(new PollValidation(), poll)) return null;
 
             await _pollEFRepository.Insert(poll);
 
