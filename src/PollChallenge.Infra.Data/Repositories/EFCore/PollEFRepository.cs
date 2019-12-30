@@ -4,6 +4,7 @@ using PollChallenge.Domain.Interfaces.Repositories.EFCore;
 using PollChallenge.Domain.ValueObjects;
 using PollChallenge.Infra.Data.Contexts;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -27,6 +28,8 @@ namespace PollChallenge.Infra.Data.Repositories.EFCore
 
         public async Task UpdateViews(Poll poll)
         {
+            if (poll == null) return;
+
             _context.Entry(poll).Property(p => p.Views).IsModified = true;
             await _context.SaveChangesAsync();
         }
@@ -40,19 +43,23 @@ namespace PollChallenge.Infra.Data.Repositories.EFCore
 
         public async Task<Stats> GetStatsById(int pollId)
         {
-            var listStats = await _context.Polls
-                .Join(_context.Votes, p => p.PollId, v => v.PollId, (p, v) => new { Poll = p, Vote = v })
-                .Where(j => j.Poll.PollId == pollId)
-                .GroupBy(j => new { j.Poll.Views, j.Vote.OptionId })
-                .Select(g => new Stats(g.Key.Views, g.Key.OptionId, g.Count()))
-                .ToListAsync();
-
-            var votesGrouped = listStats.SelectMany(s => s.Votes)
-                .GroupBy(v => v.OptionId)
-                .SelectMany(g => g.ToList(), (g, v) => new VoteStats(g.Key, v.Qty))
-                .ToList();
-
-            return new Stats(listStats.First().Views, votesGrouped);
+            return await _context.Polls
+                .Join(_context.PollOptions, p => p.PollId, o => o.PollId, (p, o) => new { Poll = p, Option = o })
+                .Where(po => po.Poll.PollId == pollId)
+                .GroupBy(po =>
+                    new
+                    {
+                        po.Poll.PollId,
+                        po.Poll.Views,
+                        po.Option.OptionId
+                    })
+                .GroupJoin(_context.Votes, g => new { g.Key.OptionId, g.Key.PollId }, v => new { v.OptionId, v.PollId },
+                    (g, v) => new { GroupBy = g, Votes = v })
+                .Select(s => new Stats(s.GroupBy.Key.Views,
+                    new List<VoteStats> { new VoteStats(s.GroupBy.Key.OptionId, s.Votes.Count()) }))
+                .GroupBy(s => s.Views)
+                .Select(s => new Stats(s.Key, s.SelectMany(gs => gs.Votes)))
+                .FirstOrDefaultAsync();
         }
 
         public void Dispose()

@@ -1,10 +1,10 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using PollChallenge.Application.Interfaces;
+﻿using PollChallenge.Application.Interfaces;
 using PollChallenge.Domain.Entities;
 using PollChallenge.Domain.Interfaces.CrossCutting.Json;
 using PollChallenge.Domain.Interfaces.Repositories.EFCore;
 using PollChallenge.Domain.ValueObjects;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace PollChallenge.Application.Services
 {
@@ -45,7 +45,7 @@ namespace PollChallenge.Application.Services
             return await _pollEFRepository.GetStatsById(pollId);
         }
 
-        private ListIgnoreProperties MountListIgnorePropertiesToGetById(Poll poll)
+        private static ListIgnoreProperties MountListIgnorePropertiesToGetById(Poll poll)
         {
             var listIgnoreProperties = new ListIgnoreProperties();
 

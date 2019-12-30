@@ -25,6 +25,9 @@ namespace PollChallenge.Domain.Entities
 
         public static Poll IncreaseViews(Poll poll)
         {
+            if (poll == null)
+                return null;
+
             poll.Views++;
             return poll;
         }
