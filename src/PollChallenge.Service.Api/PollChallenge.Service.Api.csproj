@@ -20,12 +20,13 @@
     <Compile Remove="Migrations\20191229221140_Migration-Initial.Designer.cs" />
     <Compile Remove="Migrations\20191229235508_Migration-Initial.cs" />
     <Compile Remove="Migrations\20191229235508_Migration-Initial.Designer.cs" />
+    <Compile Remove="Migrations\20191231125147_Migration-Initial.cs" />
+    <Compile Remove="Migrations\20191231125147_Migration-Initial.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.3" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>

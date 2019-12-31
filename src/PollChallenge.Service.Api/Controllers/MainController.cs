@@ -5,7 +5,7 @@ using System.Linq;
 namespace PollChallenge.Service.Api.Controllers
 {
     [ApiController]
-    public class MainController : ControllerBase
+    public abstract class MainController : ControllerBase
     {
         private readonly INotificationService _notificationService;
 
