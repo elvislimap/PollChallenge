@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.572
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Services", "1-Services", "{13D95336-119B-4EAC-9861-0B0EE043DB50}"
 EndProject
@@ -27,7 +27,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PollChallenge.Application",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PollChallenge.Infra.CrossCutting.Json", "src\PollChallenge.Infra.CrossCutting.Json\PollChallenge.Infra.CrossCutting.Json.csproj", "{90CBA04E-D233-4A7A-9A7E-53AD40D42E9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PollChallenge.Infra.CrossCutting.Validation", "src\PollChallenge.Infra.CrossCutting.Validation\PollChallenge.Infra.CrossCutting.Validation.csproj", "{51D4B615-EA90-43A4-AE0C-473F2FF60036}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PollChallenge.Infra.CrossCutting.Validation", "src\PollChallenge.Infra.CrossCutting.Validation\PollChallenge.Infra.CrossCutting.Validation.csproj", "{51D4B615-EA90-43A4-AE0C-473F2FF60036}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PollChallenge.Domain.Tests", "tests\PollChallenge.Domain.Tests\PollChallenge.Domain.Tests.csproj", "{13016330-76A5-4EE2-BD81-5D685DEC123B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{51D4B615-EA90-43A4-AE0C-473F2FF60036}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51D4B615-EA90-43A4-AE0C-473F2FF60036}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51D4B615-EA90-43A4-AE0C-473F2FF60036}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13016330-76A5-4EE2-BD81-5D685DEC123B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13016330-76A5-4EE2-BD81-5D685DEC123B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13016330-76A5-4EE2-BD81-5D685DEC123B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13016330-76A5-4EE2-BD81-5D685DEC123B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,6 +83,7 @@ Global
 		{AF910C60-8EF3-4077-9AB7-7348C451C489} = {B16EFEE3-09FE-4C97-9BD2-F65819A472E1}
 		{90CBA04E-D233-4A7A-9A7E-53AD40D42E9A} = {2206ED93-8A5B-41CE-A2C0-78BCAA55BF3B}
 		{51D4B615-EA90-43A4-AE0C-473F2FF60036} = {2206ED93-8A5B-41CE-A2C0-78BCAA55BF3B}
+		{13016330-76A5-4EE2-BD81-5D685DEC123B} = {24BA3BCA-67ED-425F-B084-7134CAFC2AC3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7FDD8D6-075A-41B3-8571-2844C623B655}

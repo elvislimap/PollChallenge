@@ -9,7 +9,7 @@ using PollChallenge.Infra.Data.Contexts;
 namespace PollChallenge.Service.Api.Migrations
 {
     [DbContext(typeof(ContextEf))]
-    [Migration("20191229235508_Migration-Initial")]
+    [Migration("20191231125147_Migration-Initial")]
     partial class MigrationInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
