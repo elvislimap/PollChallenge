@@ -1,0 +1,22 @@
+version: '3.4'
+
+networks: 
+  dockersql-network:
+    driver: bridge
+
+services:
+  pollchallenge.service.api:
+    container_name: pollchallenge.service.api
+    image: pollchallenge.service.api
+    build:
+      context: .
+      dockerfile: src/PollChallenge.Service.Api/Dockerfile
+    networks:
+      - dockersql-network
+    depends_on:
+      - sqldatabase
+  
+  sqldatabase:
+    image: "mcr.microsoft.com/mssql/server"
+    networks:
+      - dockersql-network

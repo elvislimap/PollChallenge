@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  pollchallenge.service.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    ports:
+      - "8000:80"
+      
+  sqldatabase:
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "3CqIWatg"
+      ACCEPT_EULA: "Y"

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29519.87
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Services", "1-Services", "{13D95336-119B-4EAC-9861-0B0EE043DB50}"
 EndProject
@@ -29,13 +29,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PollChallenge.Infra.CrossCu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PollChallenge.Infra.CrossCutting.Validation", "src\PollChallenge.Infra.CrossCutting.Validation\PollChallenge.Infra.CrossCutting.Validation.csproj", "{51D4B615-EA90-43A4-AE0C-473F2FF60036}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PollChallenge.Domain.Tests", "tests\PollChallenge.Domain.Tests\PollChallenge.Domain.Tests.csproj", "{13016330-76A5-4EE2-BD81-5D685DEC123B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PollChallenge.Domain.Tests", "tests\PollChallenge.Domain.Tests\PollChallenge.Domain.Tests.csproj", "{13016330-76A5-4EE2-BD81-5D685DEC123B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PollChallenge.Infra.CrossCutting.Json.Tests", "tests\PollChallenge.Infra.CrossCutting.Json.Tests\PollChallenge.Infra.CrossCutting.Json.Tests.csproj", "{99ECDA90-D73F-4536-8CCF-5AEBC9E05D7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PollChallenge.Infra.CrossCutting.Json.Tests", "tests\PollChallenge.Infra.CrossCutting.Json.Tests\PollChallenge.Infra.CrossCutting.Json.Tests.csproj", "{99ECDA90-D73F-4536-8CCF-5AEBC9E05D7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PollChallenge.Application.Tests", "tests\PollChallenge.Application.Tests\PollChallenge.Application.Tests.csproj", "{840C619D-A4C3-4FE7-A246-8AF3BE9348FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PollChallenge.Application.Tests", "tests\PollChallenge.Application.Tests\PollChallenge.Application.Tests.csproj", "{840C619D-A4C3-4FE7-A246-8AF3BE9348FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PollChallenge.Service.Api.Tests", "tests\PollChallenge.Service.Api.Tests\PollChallenge.Service.Api.Tests.csproj", "{D85D818C-D21D-442E-87C8-7315F6119D3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PollChallenge.Service.Api.Tests", "tests\PollChallenge.Service.Api.Tests\PollChallenge.Service.Api.Tests.csproj", "{D85D818C-D21D-442E-87C8-7315F6119D3B}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{29D3332B-B66D-4ECE-A8C6-3790E6C77258}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,10 @@ Global
 		{D85D818C-D21D-442E-87C8-7315F6119D3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D85D818C-D21D-442E-87C8-7315F6119D3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D85D818C-D21D-442E-87C8-7315F6119D3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29D3332B-B66D-4ECE-A8C6-3790E6C77258}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29D3332B-B66D-4ECE-A8C6-3790E6C77258}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29D3332B-B66D-4ECE-A8C6-3790E6C77258}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29D3332B-B66D-4ECE-A8C6-3790E6C77258}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

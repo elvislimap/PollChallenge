@@ -2,17 +2,22 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PollChallenge.Infra.CrossCutting.Ioc;
 using PollChallenge.Service.Api.Configurations;
 using PollChallenge.Service.Api.Middlewares;
-using PollChallenge.Infra.CrossCutting.Ioc;
 
 namespace PollChallenge.Service.Api
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IHostingEnvironment env)
         {
-            Configuration = configuration;
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", false, true)
+                .AddEnvironmentVariables();
+
+            Configuration = builder.Build();
         }
 
         public IConfiguration Configuration { get; }
@@ -25,11 +30,12 @@ namespace PollChallenge.Service.Api
 
         public static void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
             app.UseMiddleware<ExceptionMiddleware>();
-            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+            app.UseCors(b => b.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             app.UseMvc();
         }
     }
